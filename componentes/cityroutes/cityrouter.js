@@ -13,8 +13,8 @@ router.get('/city', (req, res) => {
 });
 
 router.post('/city', (req, res) => {
-    const city = req.body;
-    const country = req.body;
+    const city = req.body.city;
+    const country = req.body.country;
     const ciudad = new ciudadmodelos({
     city: city,
     country: country

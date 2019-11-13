@@ -8,12 +8,10 @@ const port = 5000;
 
 const cityRoutes = require('./componentes/cityroutes/cityrouter');
 
-
-app.use('/api', cors(), cityRoutes);
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use('/api', cors(), cityRoutes);
 
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
