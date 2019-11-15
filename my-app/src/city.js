@@ -46,6 +46,9 @@ export default Users
 */
 
 import React from 'react';
+import {connect} from 'react-redux';
+import {getItems} from './components/action/actionCity'
+import PropTypes from 'prop-types';
 
 const CITYHOST = 'http://localhost:5000/api/city'
 
@@ -58,7 +61,13 @@ class City2 extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.props.getItems();
+  }
+
   render() {
+
+    const {items}= this.props.cityReducer;
     const listItems = this.state.cities.map((city) => <li key={city._id}>{city.city}</li>);
 
       return (
@@ -92,4 +101,13 @@ class City2 extends React.Component {
   }
 }
 
-export default City2
+City2.propTypes = {
+  getItems: PropTypes.func.isRequired,
+  cityReducer: PropTypes.object.isRequired
+  }
+  
+  const mapStateToProps = (state) => ({
+    cityReducer: state.cityReducer
+  });
+
+export default connect(mapStateToProps, {getItems}) (City2);
