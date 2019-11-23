@@ -20,8 +20,9 @@ function App() {
       <Route path="/SignUp" component={SignUp} />
       <Route path="/LogIn" component={LogIn} />
       <Container></Container>
-      <Footer></Footer>
+      <Route path="/" component={App} />
       </Switch>
+      <Footer></Footer>
     </Router>
     </div>
     </Provider>

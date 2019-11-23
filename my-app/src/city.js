@@ -43,14 +43,18 @@ class Users extends React.Component {
   }
 }
 export default Users
-*/
+
 
 import React from 'react';
 import {connect} from 'react-redux';
 import {getItems} from './components/action/actionCity'
 import PropTypes from 'prop-types';
+import {getCities} from './components/action/actionCity';
 
-const CITYHOST = 'http://localhost:5000/api/city'
+
+//const CITYHOST = 'http://localhost:5000/api/city'
+
+
 
 class City2 extends React.Component {
   constructor(props) {
@@ -62,12 +66,12 @@ class City2 extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getItems();
+    this.props.getCities();
   }
 
   render() {
 
-    const {items}= this.props.cityReducer;
+    //const {items}= this.props.cityReducer;
     const listItems = this.state.cities.map((city) => <li key={city._id}>{city.city}</li>);
 
       return (
@@ -101,8 +105,9 @@ class City2 extends React.Component {
   }
 }
 
+
 City2.propTypes = {
-  getItems: PropTypes.func.isRequired,
+  getCities: PropTypes.func.isRequired,
   cityReducer: PropTypes.object.isRequired
   }
   
@@ -110,4 +115,68 @@ City2.propTypes = {
     cityReducer: state.cityReducer
   });
 
-export default connect(mapStateToProps, {getItems}) (City2);
+
+
+export default //connect(mapStateToProps, {getCities}) ();
+City2;
+ */
+
+//EXPLICACION THUNK
+//componentDidMount() {
+//  this.props.getCities();
+//}
+
+
+import React,{Component} from 'react';
+import {getCities} from './components/action/actionCity';
+import {connect} from 'react-redux';
+// import PropTypes from 'prop-types';
+
+
+class Cities extends Component {
+ 
+
+  constructor(props){
+    super(props)
+    this.state= {
+   
+    }
+  }
+
+//   static propTypes = {
+//     getCities: PropTypes.func.isRequired,
+//     city: PropTypes.object.isRequired, 
+  
+// };
+  
+  
+     async componentDidMount(){
+      await this.props.getCities();
+    }
+
+
+    render() {
+      const cities = this.props.cities;
+      if (!cities) return (<p>Loading...</p>); 
+      
+      console.log(cities.cities);
+      
+      //const listCities = cities.map<li></li>    <ul>{listCities}</ul>
+      return(
+      <div>
+      <ul>
+      {cities.cities.map((elem, i)=>{return <button><li key={i}>{elem.city}</li></button>})           }
+      </ul>
+     </div>
+      )
+    }
+};
+
+const mapStateToProps= state =>{
+  // console.log(state);
+  
+  return{
+  cities: state.cities}
+};
+
+export default  connect(mapStateToProps,{getCities})(Cities);

@@ -19,7 +19,7 @@ const store = createStore(
 
 export default store;
 */
-
+/*
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, applyMiddleware } from 'redux';
@@ -32,6 +32,44 @@ const store = createStore(cityReducer
     , composeWithDevTools(
   applyMiddleware(...middleware),
 )
+);
+
+export default store;
+*/
+
+/*
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from 'redux';
+import cityReducer from './components/reducers/reducerCity';
+import thunk from 'redux-thunk';
+
+const middleware = [thunk];
+
+const store = createStore(cityReducer
+    , composeWithDevTools(
+  applyMiddleware(...middleware),
+  //EXPLICACION THUNK applyMiddleware(thunk)
+)
+);
+
+export default store;
+*/
+
+
+import { createStore,  applyMiddleware, compose} from 'redux';
+
+
+import thunk from 'redux-thunk';
+import rootReducer from './components/reducers/reducerCity';
+
+const initialState={};
+const middleWare =[thunk];
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  rootReducer,
+  initialState,
+  composeEnhancers(applyMiddleware(...middleWare))
 );
 
 export default store;

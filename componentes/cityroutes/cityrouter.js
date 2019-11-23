@@ -8,7 +8,7 @@ router.get('/city', (req, res) => {
         if (err) {
             console.log('error de conexión');
             return res.status(500).json({ err: 'Error al consultar ciudad'})
-        } res.status(200).json({ cities: cities });
+        } res.status(200).json({cities});
     });
 });
 
