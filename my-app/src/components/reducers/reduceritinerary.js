@@ -4,7 +4,7 @@ const initialState={
     itineraries:[]
 }
 
-export default function (state = initialState,action){
+export default function reduceritinerary (state = initialState,action){
     switch (action.type) {
         case GET_ITINERARIES: 
             return {

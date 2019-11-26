@@ -169,7 +169,7 @@ class Cities extends Component {
       return(
       <div>
       <ul>
-      {cities.cities.map((elem, i)=>{return <Link to="/Itinerary/" className="link"><button><li key={i}>{elem.city}</li></button></Link>})           }
+      {cities.map((elem, i)=>{return <Link to="/Itinerary" className="link"><button><li key={i}>{elem.city}</li></button></Link>})           }
       </ul>
      </div>
       )
@@ -177,10 +177,11 @@ class Cities extends Component {
 };
 
 const mapStateToProps= state =>{
-  // console.log(state);
+  console.log('state');
+   console.log(state.city);
   
   return{
-  cities: state.cities}
+  cities: state.city.cities.cities}
 };
 
 export default  connect(mapStateToProps,{getCities})(Cities);

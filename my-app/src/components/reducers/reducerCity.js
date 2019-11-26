@@ -4,7 +4,7 @@ const initialState={
     cities:[]
 }
 
-export default function (state = initialState,action){
+export default function reducerCity (state = initialState,action){
     switch (action.type) {
         case GET_CITIES: 
             return {

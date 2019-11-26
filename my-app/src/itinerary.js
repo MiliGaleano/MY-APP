@@ -28,7 +28,7 @@ class Itineraries extends Component {
       return(
       <div>
       <ul>
-      {itineraries.itineraries.map((elem, i)=>{return <button><li key={i}>{elem.hashtags}</li></button>})           }
+      {itineraries.map((elem, i)=>{return <p>{elem.title}</p>})           }
       </ul>
      </div>
       )
@@ -39,7 +39,7 @@ const mapStateToProps= state =>{
    console.log(state);
   
   return{
-    itineraries: state.itineraries}
+    itineraries: state.itinerary.itineraries.itineraries}
 };
 
 export default  connect(mapStateToProps,{getItineraries})(Itineraries);
