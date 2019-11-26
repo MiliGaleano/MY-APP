@@ -7,11 +7,12 @@ var cors = require('cors')
 const port = 5000;
 
 const cityRoutes = require('./componentes/cityroutes/cityrouter');
+const itineraryRoutes = require('./componentes/itineraryroutes/itineraryrouter');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/api', cors(), cityRoutes);
+app.use('/api', cors(), cityRoutes, itineraryRoutes);
 
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });

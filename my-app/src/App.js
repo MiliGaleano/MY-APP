@@ -5,6 +5,7 @@ import Footer from './components/footer.js';
 import City from './city';
 import SignUp from './SignUp';
 import LogIn from './LogIn';
+import Itinerary from './itinerary';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Provider } from "react-redux";
 import store from "./store";
@@ -17,6 +18,7 @@ function App() {
     <Router>
       <Switch>
       <Route path="/City" component={City} />
+      <Route path="/Itinerary" component={Itinerary} />
       <Route path="/SignUp" component={SignUp} />
       <Route path="/LogIn" component={LogIn} />
       <Container></Container>

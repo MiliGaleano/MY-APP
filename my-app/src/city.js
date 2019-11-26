@@ -131,6 +131,7 @@ import React,{Component} from 'react';
 import {getCities} from './components/action/actionCity';
 import {connect} from 'react-redux';
 // import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 
 class Cities extends Component {
@@ -150,13 +151,16 @@ class Cities extends Component {
 // };
   
   
-     async componentDidMount(){
-      await this.props.getCities();
+     componentDidMount(){
+      this.props.getCities();
     }
 
 
     render() {
       const cities = this.props.cities;
+      console.log("this.props.cities")
+      console.log(this.props.cities)
+      console.log(this.props.city)
       if (!cities) return (<p>Loading...</p>); 
       
       console.log(cities.cities);
@@ -165,7 +169,7 @@ class Cities extends Component {
       return(
       <div>
       <ul>
-      {cities.cities.map((elem, i)=>{return <button><li key={i}>{elem.city}</li></button>})           }
+      {cities.cities.map((elem, i)=>{return <Link to="/Itinerary/" className="link"><button><li key={i}>{elem.city}</li></button></Link>})           }
       </ul>
      </div>
       )
