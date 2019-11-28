@@ -4,12 +4,15 @@ const ciudadmodelos = require('../citymodels/citymodels');
 
 
 router.get('/city', (req, res) => {
-    ciudadmodelos.find((err, cities) => {
-        if (err) {
-            console.log('error de conexión');
-            return res.status(500).json({ err: 'Error al consultar ciudad'})
+    cities.find({}, function(err, cities) {
+    //ciudadmodelos.find((err, cities) => {
+        // if (err) {
+            // console.log('error de conexión');
+            // return res.status(500).json({ err: 'Error al consultar ciudad'})
+            itineraries.populate(cities, {path: "itineraries"},function(err, cities)
         } res.status(200).json({cities});
     });
+});
 });
 
 router.post('/city', (req, res) => {

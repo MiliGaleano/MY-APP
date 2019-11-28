@@ -32,7 +32,6 @@ router.post('/itineraries', (req, res) => {
 
     itinerario.save((err, itinerarioStored) => {
     if (err) res.status(500).json ({message: 'Error al guardar'});
-    
     res.status(200).json({itinerario:itinerarioStored});
     });
   });

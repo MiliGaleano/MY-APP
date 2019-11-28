@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {getItineraries} from './components/action/actionitinerary';
+import {getItinerariesBarcelona} from './components/action/actionitinerary';
 import {connect} from 'react-redux';
 // import PropTypes from 'prop-types';
 
@@ -39,7 +39,7 @@ const mapStateToProps= state =>{
    console.log(state);
   
   return{
-    itineraries: state.itinerary.itineraries.itineraries}
+    itineraries: state.itinerary.itineraries}
 };
 
-export default  connect(mapStateToProps,{getItineraries})(Itineraries);
+export default  connect(mapStateToProps,{getItinerariesBarcelona})(Itineraries);

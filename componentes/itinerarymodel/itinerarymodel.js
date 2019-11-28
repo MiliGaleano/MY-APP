@@ -9,6 +9,7 @@ var itinerarySchema = new Schema({
     price: String,
     hashtags: String,
     cityid: String
+    
 });
 
 module.exports = mongoose.model ('itineraries', itinerarySchema);
